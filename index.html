@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Game</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <img src="C:/Users/Lenovo/Pictures/Screenshots" alt="Starting Image" style="width: 100%; height: auto;">
+    <div class="love-letter" onclick="showSite()">
+        <strong>To madam Ashvika</strong>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+    </div>
+    <div id="site-content" class="hidden">
+        <h1><strong>My Love</strong></h1>
+        <div class="letter">
+            <p>My Love , You mean the world to me , and the last thing i ever want to do is cause you pain . I realize now my actions affected you, I promise to do better , to listen more and to be the person you deserver. Our relationship is too important to let misunderstandings come between us.
+                with all my heart my love  I am Sorry
+                A poem for you <br>
+                
+                Words can hurt, actions too 
+                i never meant to upset you 
+                Time can heal whats broken now 
+                to mend our bond.I make the vow
+                Forgiveness is what i seek today 
+                to chase the clouds of doubt away 
+                with this apology sincere and true 
+                i hope that you forgive me :( I love you)
+            
+            
+        </div>
+        <div id="game-area" class="hearts">
+            <div class="heart middle"></div>
+            <div class="heart"></div>
+            <div class="heart"></div>
+            <div class="heart"></div>
+            <div class="heart"></div>
+        </div>
+        <div id="message-area-1" class="sorry-text">Sorry message</div>
+        <div id="message-area-2" class="sorry-text">Sorry message</div>
+        <div id="message-area-3" class="sorry-text">Sorry message</div>
+        <div id="message-area-4" class="sorry-text">Sorry message</div>
+        <div id="message-area-5" class="sorry-text">Sorry message</div>
+        <audio id="love-music" src="path/to/i-love-you-music.mp3" autoplay loop></audio>
+    </div>
+    <div class="background-hearts"></div>
+    <div id="game-content" class="hidden">
+        <h2>Heart Game</h2>
+        <p>Click the hearts to score points!</p>
+        <div class="heart black-heart" onclick="scorePoint()"></div>
+        <div class="heart black-heart" onclick="scorePoint()"></div>
+        <div class="heart black-heart" onclick="scorePoint()"></div>
+        <div class="heart black-heart" onclick="scorePoint()"></div>
+        <div class="heart black-heart" onclick="scorePoint()"></div>
+        <p id="score">Score: 0</p>
+        <p id="love-message" class="hidden">I love You</p>
+    </div>
+    <script src="js/script.js"></script>
+    <script>
+        function showSite() {
+            document.querySelector('.love-letter').classList.add('hidden');
+            document.getElementById('site-content').classList.remove('hidden');
+        }
+
+        function showGameTab() {
+            document.getElementById('site-content').classList.add('hidden');
+            document.getElementById('game-content').classList.remove('hidden');
+        }
+    </script>
+    <button onclick="showGameTab()">Play Heart Game</button>
+</body>
+</html>
