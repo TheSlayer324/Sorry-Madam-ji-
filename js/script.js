@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // Add background image to the love letter
     const loveLetter = document.querySelector('.love-letter');
-    loveLetter.style.backgroundImage = "url('file:///C:/Users/Lenovo/Pictures/Screenshots')";
+    loveLetter.style.backgroundImage = "url('https://media.tenor.com/v0FhxoZtDXsAAAAi/peach-goma-peach-and-goma.gif')";
     loveLetter.style.backgroundSize = 'cover';
     loveLetter.style.backgroundRepeat = 'no-repeat';
 });
