@@ -3,74 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heart Game</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Floating Hearts</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #fc7676;
+            position: relative;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .header {
+            font-size: 24px;
+            color: white;
+            margin-bottom: 10px;
+            position: absolute;
+            top: 10px;
+            text-align: center;
+        }
+        .heart {
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            background: url('https://media.tenor.com/bEBr1fBNhusAAAAi/spinning-heart-transparent.gif') no-repeat center;
+            background-size: cover;
+            animation: floatUp 5s linear infinite;
+            cursor: pointer;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+        .message {
+            position: absolute;
+            color: white;
+            font-size: 16px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 5px;
+            animation: fadeOut 7s ease-in forwards;
+        }
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        .mailbox {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: url('https://media.tenor.com/ELLRYPPAh9IAAAAi/valentines-day-valentine.gif') no-repeat center;
+            background-size: cover;
+            cursor: pointer;
+        }
+        .letter-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            text-align: center;
+        }
+        .letter {
+            color: black;
+            font-size: 18px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+        }
+        .close-btn-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+        .close-btn {
+            background: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        .explosion {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('https://media.tenor.com/J6RfhiZXpxMAAAAi/gatitos.gif') no-repeat center center;
+            background-size: cover;
+            display: none;
+        }
+        .go-back {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: black;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <img src="C:/Users/Lenovo/Pictures/Screenshots" alt="Starting Image" style="width: 100%; height: auto;">
-    <div class="love-letter" onclick="showSite()">
-        <strong>To madam Ashvika</strong>
-        <div class="heart"></div>
-        <div class="heart"></div>
-        <div class="heart"></div>
-        <div class="heart"></div>
-    </div>
-    <div id="site-content" class="hidden">
-        <h1><strong>My Love</strong></h1>
+    <div class="header">Click the hearts ;) (keep spamming if you want to)</div>
+    <div class="mailbox" onclick="showLetter()"></div>
+    <div class="letter-container" id="letterContainer">
+        <div class="close-btn-container">
+            <button class="close-btn" onclick="closeLetter()">X</button>
+        </div>
         <div class="letter">
-            <p>My Love , You mean the world to me , and the last thing i ever want to do is cause you pain . I realize now my actions affected you, I promise to do better , to listen more and to be the person you deserver. Our relationship is too important to let misunderstandings come between us.
-                with all my heart my love  I am Sorry
-                A poem for you <br>
-                
-                Words can hurt, actions too 
-                i never meant to upset you 
-                Time can heal whats broken now 
-                to mend our bond.I make the vow
-                Forgiveness is what i seek today 
-                to chase the clouds of doubt away 
-                with this apology sincere and true 
-                i hope that you forgive me :( I love you)
-            
-            
+            My Love,<br><br>
+            You mean the world to me, and the last thing I ever want to do is cause you pain.<br>
+            I realize now my actions affected you, I promise to do better, to listen more, and to be the person you deserve.<br>
+            Our relationship is too important to let misunderstandings come between us.<br>
+            With all my heart, my love, I am Sorry.<br><br>
+            <b>A poem for you :D</b><br><br>
+            Words can hurt, actions too<br>
+            I never meant to upset you<br>
+            Time can heal what's broken now<br>
+            To mend our bond, I make the vow.<br>
+            Forgiveness is what I seek today<br>
+            To chase the clouds of doubt away<br>
+            With this apology sincere and true<br>
+            I hope that you forgive me.<br><br>
+            (I love you)
         </div>
-        <div id="game-area" class="hearts">
-            <div class="heart middle"></div>
-            <div class="heart"></div>
-            <div class="heart"></div>
-            <div class="heart"></div>
-            <div class="heart"></div>
-        </div>
-        <div id="message-area-1" class="sorry-text">Sorry message</div>
-        <div id="message-area-2" class="sorry-text">Sorry message</div>
-        <div id="message-area-3" class="sorry-text">Sorry message</div>
-        <div id="message-area-4" class="sorry-text">Sorry message</div>
-        <div id="message-area-5" class="sorry-text">Sorry message</div>
-        <audio id="love-music" src="path/to/i-love-you-music.mp3" autoplay loop></audio>
     </div>
-    <div class="background-hearts"></div>
-    <div id="game-content" class="hidden">
-        <h2>Heart Game</h2>
-        <p>Click the hearts to score points!</p>
-        <div class="heart black-heart" onclick="scorePoint()"></div>
-        <div class="heart black-heart" onclick="scorePoint()"></div>
-        <div class="heart black-heart" onclick="scorePoint()"></div>
-        <div class="heart black-heart" onclick="scorePoint()"></div>
-        <div class="heart black-heart" onclick="scorePoint()"></div>
-        <p id="score">Score: 0</p>
-        <p id="love-message" class="hidden">I love You</p>
-    </div>
-    <script src="js/script.js"></script>
+    <div class="explosion" id="explosion"></div>
+    <div class="go-back" id="goBack" onclick="resetPage()">Go Back</div>
     <script>
-        function showSite() {
-            document.querySelector('.love-letter').classList.add('hidden');
-            document.getElementById('site-content').classList.remove('hidden');
+        let heartClickCount = 0;
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            document.body.appendChild(heart);
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.top = window.innerHeight + 'px';
+            heart.addEventListener('click', function(event) {
+                showMessage(event.clientX, event.clientY);
+                heartClickCount++;
+                if (heartClickCount > 20) triggerExplosion();
+            });
+            setTimeout(() => heart.remove(), 5000);
+        }
+        
+        function showMessage(x, y) {
+            const message = document.createElement('div');
+            message.classList.add('message');
+            const messages = [
+        "You are a melody but I am tone-deaf\nYou are a dream but I cant sleep.\nYou are a lighthouse but I am lost at sea\nso different but I guess that's how love must be",
+        "They Talk about how beautiful flowers are\nBut they haven't seen the flowers that bloom inside my head\nevery time I catch glimpse of yours",
+        "We are like a pair of eyes, always side by side.\nsharing the same vistas, the same emotions.\nWhen I wept, you wept with me,\nwhen I smiled, your smile mirrored mine.\nWhen I lost my sight you guided me with yours.\nTogether from the first breath to the last,",
+        "I love so much, that even if you were fire, I'll burn in your flames,\nIf you are fear, I'll be afraid,\nif you are exile, I'll walk alone\nif you are mystery, I'll know unknowns\nIf you are abyss, I'll go and dive\nIf you are darkness, I'll close my eyes\nIf you are death, I shall not know life",
+        "Sorry madam ji :("
+    ];
+            message.innerText = messages[Math.floor(Math.random() * messages.length)];
+            document.body.appendChild(message);
+            message.style.left = x + 'px';
+            message.style.top = y + 'px';
+            setTimeout(() => message.remove(), 7000);
         }
 
-        function showGameTab() {
-            document.getElementById('site-content').classList.add('hidden');
-            document.getElementById('game-content').classList.remove('hidden');
+        function showLetter() {
+            document.getElementById('letterContainer').style.display = 'block';
         }
+
+        function closeLetter() {
+            document.getElementById('letterContainer').style.display = 'none';
+        }
+
+        function triggerExplosion() {
+            document.getElementById('explosion').style.display = 'block';
+            document.getElementById('goBack').style.display = 'block';
+        }
+
+        function resetPage() {
+            document.getElementById('explosion').style.display = 'none';
+            document.getElementById('goBack').style.display = 'none';
+            heartClickCount = 0;
+        }
+
+        setInterval(createHeart, 800);
     </script>
-    <button onclick="showGameTab()">Play Heart Game</button>
 </body>
 </html>
